@@ -1,29 +1,31 @@
-import React,{Component} from "react";
+import React,{useState} from "react";
 import {View,TextInput,Button,Text,StyleSheet} from 'react-native';
 
-export default class App extends Component
+export default function App()
 {
-  render()
-  {
+
+const  [name,setName]=useState('ishan');
+
+const clickHandler= () =>{
+  setName('Reshmika');
+}
+
+ 
     return(
       <View style={styles.container}>
-        <View style={styles.header}>
 
-          <Text style={styles.boldText}>Hello world</Text>
-        </View>
-        <View style={styles.body}>
-          <Text style={styles.boldText}>Ishan Reshmika <Text>1997</Text> Ediriweera </Text>
-          <Text>Ishan Reshmika</Text>
-          <Text>Ishan Reshmika</Text>
-          <Text>Ishan Reshmika</Text>
-
+        <Text>My Name is {name}</Text>
+       
+        <View style={styles.buttonContainer}>
+          <Button title='Update State' onPress={clickHandler}/>
+          
         </View>
         
       
        
       </View>
     );
-  }
+  
 }
 const styles=StyleSheet.create({
   container:{
@@ -32,18 +34,9 @@ const styles=StyleSheet.create({
     alignItems:'center',
     justifyContent:'center',
   },
-  header:{
-    backgroundColor:'pink',
-    padding:20,
-  },
-  boldText:{
-    fontWeight:'bold',
-  },
-  body:{
-    backgroundColor:'yellow',
-    padding:20,
-     
-  }
+ buttonContainer:{
+   marginTop:20,
+ },
 
 
 });
