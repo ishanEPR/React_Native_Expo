@@ -6,12 +6,12 @@ export default function App()
 
 
 const  [people,setPeople]=useState([
-  {name:'ishan1',key:'1'},
-  {name:'ishan2',key:'2'},
-  {name:'ishan3',key:'3'},
-  {name:'ishan4',key:'4'},
-  {name:'ishan5',key:'5'},
-  {name:'ishan8',key:'7'},
+  {name:'ishan1',id:'1'},
+  {name:'ishan2',id:'2'},
+  {name:'ishan3',id:'3'},
+  {name:'ishan4',id:'4'},
+  {name:'ishan5',id:'5'},
+  {name:'ishan8',id:'7'},
   
 ]);
 
@@ -21,6 +21,8 @@ const  [people,setPeople]=useState([
       <View style={styles.container}>
       <FlatList
       data={people}
+      numColumns={2}
+      keyExtractor={(item)=>item.id}
       renderItem={({item})=>(
         <Text style={styles.item}>{item.name}</Text>
       )}
@@ -61,6 +63,8 @@ const styles=StyleSheet.create({
     padding:30,
     backgroundColor:'pink',
     fontSize:24,
+    marginHorizontal:10,
+    marginTop:24,
 
   }
  
