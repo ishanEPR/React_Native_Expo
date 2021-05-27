@@ -1,5 +1,5 @@
 import React,{useState} from "react";
-import {View,FlatList,Text,StyleSheet} from 'react-native';
+import {View,FlatList,Text,StyleSheet,TouchableOpacity} from 'react-native';
 
 export default function App()
 {
@@ -15,6 +15,17 @@ const  [people,setPeople]=useState([
   
 ]);
 
+const pressHandler=(id)=>
+{
+  console.log(id);
+  setPeople((pervPeople)=>{
+
+    return pervPeople.filter(person=>person.id!=id);
+    //click the icon then icon is removed
+
+
+  })
+}
 
  
     return(
@@ -24,27 +35,16 @@ const  [people,setPeople]=useState([
       numColumns={2}
       keyExtractor={(item)=>item.id}
       renderItem={({item})=>(
-        <Text style={styles.item}>{item.name}</Text>
+        <TouchableOpacity onPress={()=>pressHandler(item.id)}>
+           <Text style={styles.item}>{item.name}</Text>
+        </TouchableOpacity>
+       
       )}
 
       
       />
 
-      {/* <ScrollView>
-       {people.map((item)=>(
-      
-          <View key={item.key}>
-            <Text style={styles.item}>{item.name}</Text>
-          </View>
-       
-       ))}</ScrollView> */}
-     
 
-
-
-      
-      
-       
       </View>
     );
   
