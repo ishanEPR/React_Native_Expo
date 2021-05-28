@@ -1,48 +1,36 @@
 import React,{useState} from "react";
-import {View,FlatList,Text,StyleSheet,TouchableOpacity} from 'react-native';
+import {View,Text,StyleSheet,FlatList} from 'react-native';
 
 export default function App()
 {
 
+  const [todos,setTodos]=useState(
+    [
+      {text:'buy coffe',key:'1'},
+      {text:'create an app',key:'2'},
+      {text:'play on the switch',key:'3'}
+    ]
+  );
 
-const  [people,setPeople]=useState([
-  {name:'ishan1',id:'1'},
-  {name:'ishan2',id:'2'},
-  {name:'ishan3',id:'3'},
-  {name:'ishan4',id:'4'},
-  {name:'ishan5',id:'5'},
-  {name:'ishan8',id:'7'},
-  
-]);
-
-const pressHandler=(id)=>
-{
-  console.log(id);
-  setPeople((pervPeople)=>{
-
-    return pervPeople.filter(person=>person.id!=id);
-    //click the icon then icon is removed
-
-
-  })
-}
 
  
     return(
       <View style={styles.container}>
-      <FlatList
-      data={people}
-      numColumns={2}
-      keyExtractor={(item)=>item.id}
-      renderItem={({item})=>(
-        <TouchableOpacity onPress={()=>pressHandler(item.id)}>
-           <Text style={styles.item}>{item.name}</Text>
-        </TouchableOpacity>
-       
-      )}
+      {/* header */}
+        <View style={styles.content}>
+          {/* to form */}
+          <View style={styles.list}>
+            <FlatList
+            data={todos}
+            renderItem={({item})=>(
+              <Text>{item.text}</Text>
+            )}
+            
+            />
 
-      
-      />
+          </View>
+        </View>
+ 
 
 
       </View>
@@ -53,20 +41,20 @@ const styles=StyleSheet.create({
   container:{
     flex:1,
     backgroundColor:'#fff',
-    paddingTop:40,
-    paddingHorizontal:20,
+    // paddingTop:40,
+    // paddingHorizontal:20,
     // alignItems:'center',
     // justifyContent:'center',
   },
-  item:{
-    marginTop:24,
-    padding:30,
-    backgroundColor:'pink',
-    fontSize:24,
-    marginHorizontal:10,
-    marginTop:24,
+  // item:{
+  //   marginTop:24,
+  //   padding:30,
+  //   backgroundColor:'pink',
+  //   fontSize:24,
+  //   marginHorizontal:10,
+  //   marginTop:24,
 
-  }
+  // }
  
 
 
