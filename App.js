@@ -11,7 +11,8 @@ export default function App()
     [
       {text:'buy coffe',key:'1'},
       {text:'create an app',key:'2'},
-      {text:'play on the switch',key:'3'}
+      {text:'play on the switch',key:'3'},
+      {text:'my todos',key:'4'}
     ]
   );
 
