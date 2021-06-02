@@ -1,5 +1,5 @@
 import React,{useState} from "react";
-import {View,Text,StyleSheet,FlatList,Alert} from 'react-native';
+import {View,Text,StyleSheet,FlatList,Alert,TouchableWithoutFeedback,keyboard} from 'react-native';
 import Header from './components/Header';
 import TodoItem from './components/TodoItem';
 import AddTodo from './components/AddTodo';
@@ -12,7 +12,7 @@ export default function App()
       {text:'buy coffe',key:'1'},
       {text:'create an app',key:'2'},
       {text:'play on the switch',key:'3'},
-      {text:'my todos',key:'4'}
+      {text:'my todos',key:'4'  }
     ]
   );
 
@@ -45,25 +45,32 @@ const submitHandler = (text) =>{
 
  
     return(
-      <View style={styles.container}>
-     <Header/>
-        <View style={styles.content}>
-          <AddTodo submitHandler={submitHandler}/>
-          <View style={styles.list}>
-            <FlatList
-            data={todos}
-            renderItem={({item})=>(
-             <TodoItem item={item} pressHandler={pressHandler}/>
-            )}
-            
-            />
+      <TouchableWithoutFeedback
+      onPress={()=>{
+        keyboard.dismiss();
+        console.log("dismissed keyboard")
+
+      }}>
+          <View style={styles.container}>
+            <Header/>
+            <View style={styles.content}>
+              <AddTodo submitHandler={submitHandler}/>
+              <View style={styles.list}>
+                <FlatList
+                data={todos}
+                renderItem={({item})=>(
+                <TodoItem item={item} pressHandler={pressHandler}/>
+                )}
+                
+                />
+
+              </View>
+            </View>
+    
+
 
           </View>
-        </View>
- 
-
-
-      </View>
+      </TouchableWithoutFeedback>
     );
   
 }
