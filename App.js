@@ -97,19 +97,36 @@
 
 
 ////////////learn
-import React from 'react';
+import React,{useState} from 'react';
 import {StyleSheet,Text,Button,View} from 'react-native';
+
+
+
 
 export default function App()
 {
+  const [name,setName]=useState('Ishan');
+  const [person,setPerson]=useState({
+    name:'Ishannnn',age:23
+  })
+
+  const clickHandler=()=>{
+    setPerson({age:30})
+  }
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.boldText}>Hello Ishan</Text>
-      </View>
-      <View style={styles.body}>
-        <Text style={styles.boldText}>Hello Ishan</Text>
-      </View>
+     <Text>Name is: {name} </Text>
+     <Text>His name is {person.name}</Text>
+     <Text>His name is {person.age}</Text>
+
+     <View>
+        <Button
+         title='submit'
+         onPress={clickHandler}
+         
+         />   
+     </View>
+
     </View>
   );
 }
@@ -120,17 +137,6 @@ const styles=StyleSheet.create({
     backgroundColor:'#fff',
     alignItems:'center',
     justifyContent:'center',
-  },
-  header:{
-    backgroundColor:"pink",
-    padding:20,
-  },
-  boldText:{
-    fontWeight:'bold',
-  },
-  body:{
-    backgroundColor:'yellow',
-    padding:20,
-    
   }
+  
 })
