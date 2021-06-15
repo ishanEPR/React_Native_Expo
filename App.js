@@ -98,7 +98,7 @@
 
 ////////////learn
 import React,{useState} from 'react';
-import {StyleSheet,Text,Button,View,ScrollView} from 'react-native';
+import {StyleSheet,Text,Button,View,FlatList} from 'react-native';
 
 
 
@@ -122,7 +122,19 @@ export default function App()
   return (
     <View style={styles.container}>
 
-    <ScrollView>
+    <FlatList
+
+    numColumns={2}
+    keyExtractor={(item)=>item.key}
+    
+    data={people}
+    renderItem={({item})=>(
+
+      <Text style={styles.item}>{item.name}={item.age}</Text>
+    )}
+    />
+
+    {/* <ScrollView>
 
          {
       people.map((data)=>(
@@ -137,7 +149,9 @@ export default function App()
       )
     }
     
-    </ScrollView>
+    </ScrollView> */}
+
+
    
    
    
@@ -157,7 +171,8 @@ const styles=StyleSheet.create({
     padding:30,
     marginTop:24,
     backgroundColor:'pink',
-    fontSize:24
+    fontSize:24,
+    marginHorizontal:10
    
   }
   
