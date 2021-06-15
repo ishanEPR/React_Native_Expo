@@ -98,39 +98,48 @@
 
 ////////////learn
 import React,{useState} from 'react';
-import {StyleSheet,Text,Button,View,TextInput} from 'react-native';
+import {StyleSheet,Text,Button,View,ScrollView} from 'react-native';
 
 
 
 
 export default function App()
 {
-  const [name,setName]=useState('Ishan');
-  const [age,setAge]=useState("23");
+  const [people,setPeople]=useState([
+    {name:'Ishan',age:'23',key:'1'},
+    {name:'Ishan1',age:'24',key:'2'},
+    {name:'Ishan2',age:'25',key:'3'},
+    {name:'Ishan3',age:'26',key:'4'},
+    {name:'Ishan4',age:'27',key:'5'},
+    {name:'Ishan6',age:'27',key:'6'},
+    {name:'Ishan7',age:'27',key:'7'},
+    {name:'Ishan8',age:'27',key:'8'},
+    
+  ]);
+  
 
  
   return (
     <View style={styles.container}>
-    <Text>Enter Name</Text>
-    <TextInput
-    style={styles.input}
-    multiline
-    placeholder='Ishan Reshmika'
-    onChangeText={(val)=>setName(val)}
+
+    <ScrollView>
+
+         {
+      people.map((data)=>(
+          <View key={data.key}>
+            <Text style={styles.item}>{data.name} and {data.age}</Text>
+          </View>
+      )
+        
+
+          
+        
+      )
+    }
     
-    />
-
-    <Text>Enter Age:</Text>
-    <TextInput
-    style={styles.input}
-    keyboardType='numeric'
-    placeholder='24'
-    onChangeText={(val)=>setAge(val)}
-    />
-     
-     
-     <Text>His name is {name} and  age is {age}</Text>
-
+    </ScrollView>
+   
+   
    
     </View>
   );
@@ -140,15 +149,16 @@ const styles=StyleSheet.create({
   container:{
     flex:1,
     backgroundColor:'#fff',
-    alignItems:'center',
-    justifyContent:'center',
+   paddingTop:40,
+   paddingHorizontal:20
   },
-  input:{
-    borderWidth:1,
-    borderColor:'#777',
-    padding:8,
-    margin:10,
-    width:200,
+  item:{
+   
+    padding:30,
+    marginTop:24,
+    backgroundColor:'pink',
+    fontSize:24
+   
   }
   
 })
