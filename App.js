@@ -98,7 +98,7 @@
 
 ////////////learn
 import React,{useState} from 'react';
-import {StyleSheet,Text,Button,View,FlatList} from 'react-native';
+import {StyleSheet,Text,Button,View,FlatList,TouchableOpacity} from 'react-native';
 
 
 
@@ -118,6 +118,14 @@ export default function App()
   ]);
   
 
+  const pressHandler=(id)=>{
+    console.log(id);
+
+    setPeople((prevPeople)=>{
+
+      return prevPeople.filter(person =>person.key!=id)
+    })
+  }
  
   return (
     <View style={styles.container}>
@@ -130,7 +138,15 @@ export default function App()
     data={people}
     renderItem={({item})=>(
 
-      <Text style={styles.item}>{item.name}={item.age}</Text>
+      <TouchableOpacity
+      
+      onPress={()=>pressHandler(item.key)}
+      >
+        <Text style={styles.item}>{item.name}={item.age}</Text>
+
+      </TouchableOpacity>
+
+      
     )}
     />
 
