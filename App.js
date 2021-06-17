@@ -87,15 +87,15 @@ const styles=StyleSheet.create({
   content:{
    
     padding:40,
-    backgroundColor:'pink',
+    // backgroundColor:'pink',
     flex:1
    
    
   },
   list:{
     marginTop:20,
-    backgroundColor:'yellow',
-    flex:1,
+    // backgroundColor:'yellow',
+   flex:1,
   }
   
  })
