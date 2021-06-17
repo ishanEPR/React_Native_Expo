@@ -98,7 +98,7 @@
 
 ////////////learn
 import React,{useState} from 'react';
-import {StyleSheet,Text,Button,View,FlatList,TouchableOpacity,Alert} from 'react-native';
+import {StyleSheet,Text,Button,View,FlatList,TouchableOpacity,Alert,TouchableWithoutFeedback,Keyboard} from 'react-native';
 import Header from './components/Header';
 import AddTodo from './components/AddTodo';
 import TodoItem from './components/TodoItem';
@@ -141,25 +141,35 @@ export default function App()
 
 
   return (
-    <View style={styles.container}>
-    <Header/>
-      <View style={styles.content}>
 
-      <AddTodo submitHandler={submitHandler}/>
-        <View style={styles.list}>
-          <FlatList
-            data={todos}
-            renderItem={({item})=>(
-              <TodoItem item={item}
-              pressHandler={pressHandler}/>
-            )}
-          />
+    <TouchableWithoutFeedback
+    onPress={()=>{
+      console.log('dismissed keyboard');
+      Keyboard.dismiss();
+    }}>
+    
+    
+        <View style={styles.container}>
+        <Header/>
+          <View style={styles.content}>
+
+          <AddTodo submitHandler={submitHandler}/>
+            <View style={styles.list}>
+              <FlatList
+                data={todos}
+                renderItem={({item})=>(
+                  <TodoItem item={item}
+                  pressHandler={pressHandler}/>
+                )}
+              />
+            </View>
+          
+          </View>
+
+
         </View>
-      
-      </View>
 
-
-    </View>
+    </TouchableWithoutFeedback>
   );
 }
 
