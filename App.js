@@ -98,8 +98,10 @@
 
 ////////////learn
 import React,{useState} from 'react';
-import {StyleSheet,Text,Button,View,FlatList,TouchableOpacity} from 'react-native';
+import {StyleSheet,Text,Button,View,FlatList,TouchableOpacity,Alert} from 'react-native';
 import Header from './components/Header';
+import AddTodo from './components/AddTodo';
+import TodoItem from './components/TodoItem';
 
 
 
@@ -112,6 +114,30 @@ export default function App()
     {text:'play on the switch',key:'3'},
   ])
   
+  const pressHandler=(key)=>{
+    setTodos((prevTodos)=>{
+      return prevTodos.filter(todo=>todo.key!=key);
+
+    })
+  }
+
+  const submitHandler=(text)=>{
+    if(text.length>3)
+    {
+      setTodos((prevTodos)=>{
+      return [
+        {text:text,key:Math.random().toString()},
+        ...prevTodos
+      ];
+    })
+    }
+    else{
+      Alert.alert('OOPS!',"Todos must be over 3 char long",
+      [
+        {text:'Understood',onPress:()=> console.log('alert closed')}
+      ]);
+    }
+  }
 
 
   return (
@@ -119,12 +145,13 @@ export default function App()
     <Header/>
       <View style={styles.content}>
 
-      {/* to form */}
+      <AddTodo submitHandler={submitHandler}/>
         <View style={styles.list}>
           <FlatList
             data={todos}
             renderItem={({item})=>(
-              <Text>{item.text}</Text>
+              <TodoItem item={item}
+              pressHandler={pressHandler}/>
             )}
           />
         </View>

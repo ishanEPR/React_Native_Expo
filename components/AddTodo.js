@@ -1,33 +1,76 @@
-import React,{useState} from "react";
-import {Text,StyleSheet,TextInput,Button,View} from 'react-native';
+// import React,{useState} from "react";
+// import {Text,StyleSheet,TextInput,Button,View} from 'react-native';
 
+
+// export default function AddTodo({submitHandler})
+// {
+//     const  [text,setText]=useState('');
+//     const changeHandler = (val) =>{
+//         setText(val);
+
+//     }
+//     return(
+//         <View>
+//             <TextInput
+//             style={styles.input}
+//             placeholder='new todo...'
+//             onChangeText={changeHandler}
+//             />
+//             <Button onPress={()=>submitHandler(text)} title='add todo' color='coral'/>
+//         </View>
+//     );
+// }
+
+// const styles=StyleSheet.create({
+//     input:{
+//         marginBottom:10,
+//         paddingHorizontal:8,
+//         paddingVertical:6,
+//         borderBottomWidth:1,
+//         borderBottomColor:'#ddd',
+
+//     }
+// });
+
+
+import React,{useState} from 'react';
+import {StyleSheet,Text,TextInput,Button,View} from 'react-native';
 
 export default function AddTodo({submitHandler})
 {
-    const  [text,setText]=useState('');
-    const changeHandler = (val) =>{
+
+    const [text,setText]=useState(' ')
+    const changeHandler=(val)=>{
+
         setText(val);
 
+
     }
-    return(
+    return (
         <View>
             <TextInput
             style={styles.input}
             placeholder='new todo...'
             onChangeText={changeHandler}
             />
-            <Button onPress={()=>submitHandler(text)} title='add todo' color='coral'/>
+
+            <Button title='Add Todo' onPress={()=>submitHandler(text)} color='coral'/>
         </View>
+
+
+
     );
 }
 
 const styles=StyleSheet.create({
     input:{
+        padding:20,
         marginBottom:10,
         paddingHorizontal:8,
         paddingVertical:6,
         borderBottomWidth:1,
-        borderBottomColor:'#ddd',
+        borderBottomColor:'#ddd'
 
+        
     }
-});
+})
